@@ -1,0 +1,1 @@
+# groovy-assets-directory-example
