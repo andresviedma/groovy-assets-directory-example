@@ -1,6 +1,6 @@
 
 class TestClass {
-    static void helloWorld() {
+    void helloWorld() {
         println "Hello world!"
     }
 }
