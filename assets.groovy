@@ -20,6 +20,7 @@ rest {
         base: 'http://gateway.marvel.com/',
         path: '/v1/public',
         paramsHandler: this.&marvelAuthenticate,
+        metaLoader: { new OpenApiDoc(it) },
         exceptionOnError: false,
         logCalls: true
         )
