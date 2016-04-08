@@ -2,9 +2,10 @@
 Demo repository with an example creating a directory of microservices accesible
 through the Groovy shell. The directory makes use of
 [Groovy SourceGrape](https://github.com/andresviedma/sourcegrape) and
-[Groovy DynApiClient](https://github.com/andresviedma/sourcegrape).
+[Groovy DynApiClient](https://github.com/andresviedma/dynapiclient-groovy).
 
 Usage:
+
 1. Copy this in your local ~/.groovy/groovysh.profile
 2. Start the groovysh
 3. Call the registered demo services!
