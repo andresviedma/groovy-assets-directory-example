@@ -6,7 +6,7 @@ through the Groovy shell. The directory makes use of
 [Groovy DynApiClient](https://github.com/andresviedma/dynapiclient-groovy).
 
 For this demo we have used public APIs instead of microservices, concretely
-the [rest.marvel API](http://developer.rest.marvel.com/),
+the [Marvel API](http://developer.marvel.com/),
 [Kanboard](https://kanboard.net/documentation/api-json-rpc) and
 [JSONPlaceholder](http://jsonplaceholder.typicode.com/).
 
@@ -35,13 +35,13 @@ binding.variables << bootstrap.getAssetsDirectory(this)
 
 2. Start the groovysh
 3. Call the registered demo services!
-4. If you want to call also the rest.marvel API, copy this in ~/.groovy/assets_secret.groovy using your API Keys
+4. If you want to call also the Marvel API, copy this in ~/.groovy/assets_secret.groovy using your API Keys
 
 ```groovy
 auth {
-    rest.marvel {
-        publicKey = '<your-rest.marvel-api-public-key>'
-        privateKey = '<your-rest.marvel-api-private-key>'
+    marvel {
+        publicKey = '<your-marvel-api-public-key>'
+        privateKey = '<your-marvel-api-private-key>'
     }
 }
 ```
