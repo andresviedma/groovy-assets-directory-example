@@ -6,7 +6,7 @@ through the Groovy shell. The directory makes use of
 [Groovy DynApiClient](https://github.com/andresviedma/dynapiclient-groovy).
 
 For this demo we have used public APIs instead of microservices, concretely
-the [Marvel API](http://developer.marvel.com/),
+the [rest.marvel API](http://developer.rest.marvel.com/),
 [Kanboard](https://kanboard.net/documentation/api-json-rpc) and
 [JSONPlaceholder](http://jsonplaceholder.typicode.com/).
 
@@ -35,13 +35,13 @@ binding.variables << bootstrap.getAssetsDirectory(this)
 
 2. Start the groovysh
 3. Call the registered demo services!
-4. If you want to call also the Marvel API, copy this in ~/.groovy/assets_secret.groovy using your API Keys
+4. If you want to call also the rest.marvel API, copy this in ~/.groovy/assets_secret.groovy using your API Keys
 
 ```groovy
 auth {
-    marvel {
-        publicKey = '<your-marvel-api-public-key>'
-        privateKey = '<your-marvel-api-private-key>'
+    rest.marvel {
+        publicKey = '<your-rest.marvel-api-public-key>'
+        privateKey = '<your-rest.marvel-api-private-key>'
     }
 }
 ```
@@ -59,24 +59,11 @@ println rest.jsonplaceholder.posts << [title: 'Hi!', id: 3747634, userId: 4, bod
 println rest.jsonplaceholder.posts.add([title: 'Hi2!', id: 3747635, userId: 4, body: 'Good morning again.'])
 println rest.jsonplaceholder.posts."37".delete()
 
-println "** Documentation of /public/v1/characters"
-println marvel.characters
-
-println "\n** Documentation of /public/v1/characters"
-println marvel.characters.help()
-
-println "\n** Call /public/v1/characters and print the ids and names"
-def characters = marvel.characters()
-println pretty(characters.data.results.collect { "${it.id}: ${it.name}" })
-
-println "\n** Find Adam Warlock id"  // 1010354
-def warlock = characters.data.results.find { it.name == 'Adam Warlock' }
-println "Adam Warlock is: ${warlock.id}"
-
-println "\n** Documentation of /public/v1/characters/{characterId}/series"
-println marvel.characters."${warlock.id}".series
-
-println "\n** Series Warlock appeared in"
-def series =  marvel.characters."${warlock.id}".series()
-println pretty(series.data.results*.title)
+rest.marvel.characters
+characters = rest.marvel.characters()
+pretty characters.data.results.collect { "${it.id}: ${it.name}" }
+warlock = characters.data.results.find { it.name == 'Adam Warlock' }
+rest.marvel.characters."${warlock.id}".series
+series =  rest.marvel.characters."${warlock.id}".series();
+pretty series.data.results*.title
 ```
