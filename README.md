@@ -4,6 +4,9 @@ through the Groovy shell. The directory makes use of
 [Groovy SourceGrape](https://github.com/andresviedma/sourcegrape) and
 [Groovy DynApiClient](https://github.com/andresviedma/dynapiclient-groovy).
 
+The whys and hows of this idea are explained in
+['Operating Microservices with Groovy'](http://www.slideshare.net/andresviedma/operating-microservices-with-groovy).
+
 Usage:
 
 1. Copy this in your local ~/.groovy/groovysh.profile
