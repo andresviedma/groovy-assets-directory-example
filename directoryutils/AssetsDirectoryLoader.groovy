@@ -13,6 +13,6 @@ class AssetsDirectoryLoader {
                 configText += file.getText()
             }
         }
-        return new ConfigSlurper().parse(configText)
+        return new ConfigSlurper(classLoader: getClass().getClassLoader()).parse(configText)
     }
 }
