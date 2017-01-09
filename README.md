@@ -7,7 +7,7 @@ through the Groovy shell. The directory makes use of
 
 For this demo we have used public APIs instead of microservices, concretely
 the [Marvel API](http://developer.marvel.com/),
-[Kanboard](https://kanboard.net/documentation/api-json-rpc) and
+[Random.org](https://api.random.org/json-rpc/1/) and
 [JSONPlaceholder](http://jsonplaceholder.typicode.com/).
 
 
@@ -22,7 +22,6 @@ The whys and hows of this idea are explained in
 println "Loading assets directory"
 
 // Load SourceGrape artifact from the Maven repo
-@GrabResolver(name='bintray-andresviedma-maven', root='http://dl.bintray.com/andresviedma/maven')
 @Grab('com.sourcegrape:sourcegrape')
 import com.sourcegrape.*
 
@@ -43,14 +42,17 @@ auth {
         publicKey = '<your-marvel-api-public-key>'
         privateKey = '<your-marvel-api-private-key>'
     }
+    random {
+        apiKey = '<your-random-org-api-key>'
+    }
 }
 ```
 
 ## Examples of demo services calls
 
 ```groovy
-pretty jsonrpc.kanboard.getMyProjects()
-pretty jsonrpc.kanboard.getAllTasks(project_id: 1, status_id: 1)
+pretty jsonrpc.random.generateIntegers(n: 6, min: 1, max: 60)
+pretty jsonrpc.random.generateUUIDs(n: 2)
 
 pretty rest.jsonplaceholder.posts."37".comments()
 pretty rest.jsonplaceholder.posts."37"()

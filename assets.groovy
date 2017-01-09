@@ -30,6 +30,11 @@ jsonrpc {
         base: 'http://demo.kanboard.net/jsonrpc.php',
         clientHandler: { it.auth.basic 'demo', 'demo123' }
         )
+
+    random = new JsonRpcClient(
+        base: 'https://api.random.org/json-rpc/1/invoke',
+        paramsHandler: { (it instanceof Map? it : [:]) + [apiKey: auth.random.apiKey] }
+        )
 }
 
 void marvelAuthenticate(Map callParams, String method) {
